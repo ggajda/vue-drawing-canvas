@@ -1,17 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <SignCanvas ref="signCanvas" backgroundColor="#eee" lineJoin="bevel" />
+  <button @click="reset">Reset</button>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { ref } from 'vue'
+import SignCanvas from './components/SignCanvas.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const signCanvas = ref(null)
+
+const reset = () => {
+  signCanvas.value.reset();
 }
+
 </script>
 
 <style>
