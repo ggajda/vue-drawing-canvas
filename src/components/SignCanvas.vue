@@ -1,9 +1,17 @@
 <template>
-  <vue-drawing-canvas ref="VueCanvasDrawing" />
+  <vue-drawing-canvas ref="VueCanvasDrawing" backgroundColor="#eee" lineJoin="bevel" />
+  <button @click="reset">Reset</button>
 </template>
 
 <script setup>
+  import { ref } from "vue";
   import VueDrawingCanvas from "vue-drawing-canvas";
+
+  const VueCanvasDrawing = ref(null);
+
+  const reset = () => {
+    VueCanvasDrawing.value.reset();
+  }
 </script>
 
 <style scoped>

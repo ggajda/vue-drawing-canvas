@@ -1,18 +1,9 @@
 <template>
-  <SignCanvas ref="signCanvas" backgroundColor="#eee" lineJoin="bevel" />
-  <button @click="reset">Reset</button>
+  <SignCanvas />
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import SignCanvas from './components/SignCanvas.vue'
-
-const signCanvas = ref(null)
-
-const reset = () => {
-  signCanvas.value.reset();
-}
-
+  import SignCanvas from './components/SignCanvas.vue'
 </script>
 
 <style>
