@@ -1,9 +1,9 @@
 <template>
-  <SignCanvas />
+  <KP />
 </template>
 
 <script setup>
-  import SignCanvas from './components/SignCanvas.vue'
+  import KP from './components/KP.vue'
 </script>
 
 <style>

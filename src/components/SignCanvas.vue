@@ -10,8 +10,6 @@
   
   <button @click="reset">Reset</button>
   <button @click="save">Save</button>
-  <br>
-  <img :src="img" alt />
 </template>
 
 <script setup>
@@ -19,7 +17,6 @@ import { ref } from "vue";
 import VueDrawingCanvas from "vue-drawing-canvas";
 
 const VueCanvasDrawing = ref(null);
-const img = ref(window.localStorage.getItem("VueDrawingCanvas"));
 
 const reset = () => {
   VueCanvasDrawing.value.reset();
