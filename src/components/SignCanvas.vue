@@ -1,20 +1,43 @@
 <template>
-  <vue-drawing-canvas ref="VueCanvasDrawing" backgroundColor="#eee" lineJoin="bevel" />
+  <vue-drawing-canvas
+    ref="VueCanvasDrawing"
+    lineJoin="bevel"
+    :styles="{
+            border: 'solid 1px #000',
+          }"
+  />
+  <br />
+  
   <button @click="reset">Reset</button>
+  <button @click="save">Save</button>
+  <br>
+  <img :src="img" alt />
 </template>
 
 <script setup>
-  import { ref } from "vue";
-  import VueDrawingCanvas from "vue-drawing-canvas";
+import { ref } from "vue";
+import VueDrawingCanvas from "vue-drawing-canvas";
 
-  const VueCanvasDrawing = ref(null);
+const VueCanvasDrawing = ref(null);
+const img = ref(window.localStorage.getItem("VueDrawingCanvas"));
 
-  const reset = () => {
-    VueCanvasDrawing.value.reset();
-  }
+const reset = () => {
+  VueCanvasDrawing.value.reset();
+};
+
+const save = () => {
+  window.localStorage.setItem(
+    "VueDrawingCanvas",
+    VueCanvasDrawing.value.save()
+  );
+};
 </script>
 
 <style scoped>
+vue-drawing-canvas {
+  border: 1px;
+}
+
 h3 {
   margin: 40px 0 0;
 }
