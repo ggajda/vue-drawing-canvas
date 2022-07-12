@@ -29,7 +29,6 @@
 
 <script setup>
 import { ref } from "vue";
-
 const img = ref(window.localStorage.getItem("VueDrawingCanvas"));
 </script>
 

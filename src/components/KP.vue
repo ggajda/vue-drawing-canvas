@@ -1,9 +1,9 @@
 <template>
-  <div v-if="form">
+  <div v-if="show">
     <KpForm />
   </div>
   <div v-else>
-    <SignCanvas refs="VueCanvasDrawing" />
+    <SignCanvas ref="signCanvas" />
   </div>
   <button @click="sng">{{ bname }}</button>
 </template>
@@ -13,20 +13,18 @@ import { ref } from "vue";
 import KpForm from "./KpForm.vue";
 import SignCanvas from "./SignCanvas.vue";
 
-const form = ref(true);
-const bname = ref('Sign')
-const VueCanvasDrawing = ref("VueCanvasDrawing")
+const show = ref(true);
+const bname = ref("Sign");
+const signCanvas = ref();
 
 const sng = () => {
-  form.value = !form.value
+  show.value = !show.value;
 
-  if (form.value) {
-    bname.value = 'Sign'
+  if (show.value) {
+    bname.value = "Sign";
+    signCanvas.value.sav();
+  } else {
+    bname.value = "Close";
   }
-  else {
-    VueCanvasDrawing.value.save()
-    bname.value = 'Close'
-  }
-}
-
+};
 </script>

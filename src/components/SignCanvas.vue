@@ -7,13 +7,12 @@
           }"
   />
   <br />
-  
+
   <button @click="reset">Reset</button>
-  <button @click="save">Save</button>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { defineExpose, ref } from "vue";
 import VueDrawingCanvas from "vue-drawing-canvas";
 
 const VueCanvasDrawing = ref(null);
@@ -22,12 +21,16 @@ const reset = () => {
   VueCanvasDrawing.value.reset();
 };
 
-const save = () => {
+const sav = () => {
   window.localStorage.setItem(
     "VueDrawingCanvas",
     VueCanvasDrawing.value.save()
   );
 };
+
+defineExpose({
+  sav,
+});
 </script>
 
 <style scoped>
