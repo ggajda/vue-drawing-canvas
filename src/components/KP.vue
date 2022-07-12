@@ -1,12 +1,11 @@
 <template>
   <div v-if="form">
     <KpForm />
-    <img :src="img" />
   </div>
   <div v-else>
-    <SignCanvas />
+    <SignCanvas refs="VueCanvasDrawing" />
   </div>
-  <button @click="() => form = !form">Sign</button>
+  <button @click="sng">{{ bname }}</button>
 </template>
 
 <script setup>
@@ -15,7 +14,19 @@ import KpForm from "./KpForm.vue";
 import SignCanvas from "./SignCanvas.vue";
 
 const form = ref(true);
-const img = ref(window.localStorage.getItem("VueDrawingCanvas"));
+const bname = ref('Sign')
+const VueCanvasDrawing = ref("VueCanvasDrawing")
 
-console.log();
+const sng = () => {
+  form.value = !form.value
+
+  if (form.value) {
+    bname.value = 'Sign'
+  }
+  else {
+    VueCanvasDrawing.value.save()
+    bname.value = 'Close'
+  }
+}
+
 </script>
