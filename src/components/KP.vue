@@ -1,9 +1,11 @@
 <template>
-  <div v-if="show">
-    <KpForm />
-  </div>
-  <div v-else>
-    <SignCanvas ref="signCanvas" />
+  <div id="pdf">
+    <div v-if="show">
+      <KpForm />
+    </div>
+    <div v-else>
+      <SignCanvas ref="signCanvas" />
+    </div>
   </div>
   <button @click="sng">{{ bname }}</button>
 </template>
